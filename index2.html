@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="Pn">
+        <h1>positie or negative number</h1>
+        <input type="number" id="num1" name="number" placeholder="Enter a number">
+        <button onclick="check()">check</button>
+        <p id="res">Result : </p>
+        
+    </div>
+    <div class="Pn">
+        <h1>odd or even number</h1>
+        <input type="number" id="num2" name="number" placeholder="Enter a number">
+        <button onclick="check1()">Check</button>
+        <p id="res1">Result : </p>
+    </div>
+    <div class="Pn">
+        <h1>full name of the state </h1>
+        <select name="state" id="statename" onclick="check4()">
+            <option value="Tamil Nadu">TN</option>
+            <option value="Kerala">KR</option>
+            <option value="Uttar Pradesh">UP</option>
+            <option value="Andhra pradesh">AP</option>
+            <option value="Himachal pradesh">HP</option>
+        </select>
+        <p id="res2">Result : </p>
+
+    </div>
+    <div class="Pn">
+        <h1>Bill Amount</h1>
+        <h2>purchase more than 2000 you will get an discount of 10%</h2>
+        <input type="number" name="bill-amount" placeholder="Bill-amount" id="billamount">
+        <button onclick="billcheck()">Enter</button>
+        <p id="res3">Result : </p>
+        
+    </div>
+    <div class="Pn">
+        <h1>Hike or not </h1>
+        <h2>salary less than 30,000 and expenditure greater than 3 years</h2>
+        <input type="number" name="salary" id="salary" placeholder="Enter your salary">
+        <input type="number" name="expenditure" id="expenditure" placeholder="Enter your expenditure">
+        <button onclick="hike()">Enter</button>
+        <p id="res4">Result : </p>
+
+    </div>
+    <div class="Pn">
+        <h1>Products</h1>
+        <h2>if average of 3 products is above 1000 you will get a discount of 5%</h2>
+        <input type="number" name="product1"  id="product1" placeholder="product1"> 
+        <input type="number" name="product2"  id="product2" placeholder="product2"> 
+        <input type="number" name="product3"  id="product3" placeholder="product3"> 
+        <button onclick="find()">Enter</button>
+        <p id="res5">Result : </p>
+
+    </div>
+    <div class="Pn">
+        <h1>Maximum of 3 marks </h1>
+        <input type="number" placeholder="enter a number" required id="firstone">
+        <input type="number" placeholder="enter a number" required id="secondone">
+        <input type="number" placeholder="enter a number" required id="thirdone">
+        <button onclick="ans()">Enter</button>
+        <p id="res7">Result : </p>
+    </div>
+    <div class="Pn" id="Pl">
+        <h2>if the bill is selected by card you can get a discount of 2 percent</h2>
+        <input type="number" placeholder="Enter your bill" name="bill-value" id="billvalue">
+        <select name="payment-opt" id="paymentopt">
+            <option value="card">card</option>
+            <option value="cashon-delivery">cashon-delivery</option>
+            <option value="upi">upi</option>
+            
+        </select>
+        <button onclick="bill()">Enter</button>
+        <p id="res9">Invoive : </p>
+    </div>
+    <script>
+        var num = document.getElementById("num1") 
+        var Result = document.getElementById("res")
+        
+        function check(){
+            let num2 = "";
+            if(num.value > 0){
+                num2 = "positive number";
+            }else{
+                num2 = "negative number";
+            }
+            Result.textContent = "Result : " +  num2
+
+        }
+        let num1 = document.getElementById("num2")
+        let res1 = document.getElementById("res1")
+        let num3 = "";
+        function check1(){
+           
+            if(num1.value%2 == 0){
+                num3 = "even number"
+            }else{
+                num3 = "odd number"
+            }
+            res1.textContent = "Result : " + num3
+        }
+        let res2 = document.getElementById("res2")
+        let statename = document.getElementById("statename")
+        function check4(){
+            res2.textContent = "Result :" + statename.value
+        }
+        let billamount = document.getElementById("billamount")
+        let res3 = document.getElementById("res3")
+        function billcheck(){
+            let billvalue = "";
+            if (billamount.value > 2000){
+                billvalue = billamount.value - (billamount.value*10/100)
+
+
+            }else{
+                billvalue = billamount.value
+            }
+            res3.textContent = "Result :" + billvalue
+        }
+        let salary = document.getElementById("salary")
+        let expenditure = document.getElementById("expenditure")
+        let res4 = document.getElementById("res4")
+        function hike(){
+            let hikevalue = "";
+            if((salary.value < 30000) && (expenditure.value > 3)){
+                hikevalue = Number(salary.value) + Number(20/100*salary.value)
+            }else{
+                hikevalue = salary.value
+            }
+            res4.textContent ="Result:" + hikevalue
+
+
+
+        }
+        function find(){
+            let num1 = document.getElementById("product1")
+            let num2 = document.getElementById("product2")
+            let num3 = document.getElementById("product3")
+            
+            let total = Number(num1.value) + Number(num2.value) + Number(num3.value);
+            let value = ""; 
+            let average = total/3; 
+            if(average > 1000){
+                value = total-(5/100*total)
+            }else{
+                value = total
+            }
+            res5.textContent = "Result : " + value
+        }
+        function ans(){
+            let first = document.getElementById("firstone")
+            let second = document.getElementById("secondone")
+            let third = document.getElementById("thirdone")
+            let val = " ";
+            if ((first.value > second.value) && (first.value > third.value)){
+                val = first.value
+            } else if ((second.value > first.value) && (second.value > third.value )){
+                val = second.value
+            }else if((third.value > first.value) && (third.value > second.value)){
+                val = third.value
+            }
+            res7.textContent = "Result : " + val
+
+        }
+        function bill(){
+            let bill = "";
+            let opt = "";
+            let billvalue = document.getElementById("billvalue")
+            let payment = document.getElementById("paymentopt")
+            if (payment.value == "card"){
+                bill = billvalue.value - (billvalue.value*2/100)
+                opt = "card"
+
+               
+            }else{
+                bill = billvalue.value
+                opt = "not card "
+            }
+           let container = document.getElementById("Pl")
+           let element = document.createElement("div")
+           element.innerHTML = `<p> you are  selected by ${opt} so the final bill is ${bill} </p>`
+           container.append(element)
+
+
+            
+
+        }
+        
+    </script>
+</body>
+</html>
